@@ -50,13 +50,29 @@ function createCard (followersArray){
   const gitCard = document.createElement('div'),
         gitInfo = document.createElement('div'),
         gitImg = document.createElement('img'),
-        gitH3 = document.createElement('p'),
-        gitP1 = document.createElement('p'),
-        gitP2 = document.createElement('p'),
-        gitP3 = document.createElement('p'),
-        gitP4 = document.createElement('p'),
-        gitP5 = document.createElement('p'),
-        gitA = document.createElement('a')
+        gitH3 = document.createElement('h3'),
+        gitP1UserName = document.createElement('p'),
+        gitP2Location = document.createElement('p'),
+        gitP3Profile = document.createElement('p'),
+        gitP4Followers = document.createElement('p'),
+        gitP5Following = document.createElement('p'),
+        gitP6Bio = document.createElement('p'),
+        gitA = document.createElement('a');
+
+        gitCard.append(gitImg);
+        gitCard.append(gitInfo);
+        gitCard.append(gitH3);
+        gitCard.append(gitP1UserName);
+        gitCard.append(gitP2Location);
+        gitCard.append(gitP3Profile);
+        gitP3Profile.append(gitA);
+        gitCard.append(gitP4Profile);
+        gitCard.append(gitP5Profile);
+        gitCard.append(gitP6Profile);
+
+
+        
+
 
 }
 
