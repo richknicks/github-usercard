@@ -66,9 +66,15 @@ function createCard (followersArray){
         gitCard.append(gitP2Location);
         gitCard.append(gitP3Profile);
         gitP3Profile.append(gitA);
-        gitCard.append(gitP4Profile);
-        gitCard.append(gitP5Profile);
-        gitCard.append(gitP6Profile);
+        gitCard.append(gitP4Followers);
+        gitCard.append(gitP5Following);
+        gitCard.append(gitP6Bio);
+
+        gitCard.classList.add("card");
+        gitInfo.classList.add("card-info");
+        gitH3.classList.add("name");
+        gitP1UserName.classList.add("username");
+        
 
 
         
