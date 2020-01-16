@@ -2,7 +2,7 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-axios.get("https://api.github.com/users/richknicks")
+
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -25,7 +25,7 @@ axios.get("https://api.github.com/users/richknicks")
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -46,10 +46,28 @@ const followersArray = [];
 </div>
 
 */
-function createCard (followersArray){
+const followersArray = [
+  'SethC16',
+  'alecdye',
+  'M-PAW',
+  'AliciaPetgrave',
+  'richknicks',
+  'Vrndavana'
+];
+
+followersArray.forEach(user => {
+  axios.get('https://api.github.com/users/' + user)
+  .then( response => {
+      gitProfile.append(createCard(response))
+  })
+  .catch( err => {
+    console.log('Nothing to display.', err);
+  })
+})
+function createCard (user){
   const gitCard = document.createElement('div'),
-        gitInfo = document.createElement('div'),
         gitImg = document.createElement('img'),
+        gitInfo = document.createElement('div'),
         gitH3 = document.createElement('h3'),
         gitP1UserName = document.createElement('p'),
         gitP2Location = document.createElement('p'),
@@ -61,26 +79,41 @@ function createCard (followersArray){
 
         gitCard.append(gitImg);
         gitCard.append(gitInfo);
-        gitCard.append(gitH3);
-        gitCard.append(gitP1UserName);
-        gitCard.append(gitP2Location);
-        gitCard.append(gitP3Profile);
-        gitP3Profile.append(gitA);
-        gitCard.append(gitP4Followers);
-        gitCard.append(gitP5Following);
-        gitCard.append(gitP6Bio);
+        gitInfo.append(gitH3);
+        gitInfo.append(gitP1UserName);
+        gitInfo.append(gitP2Location);
+        gitInfo.append(gitP3Profile);
+        gitInfo.append(gitP4Followers);
+        gitInfo.append(gitP5Following);
+        gitInfo.append(gitP6Bio);
 
         gitCard.classList.add("card");
         gitInfo.classList.add("card-info");
         gitH3.classList.add("name");
         gitP1UserName.classList.add("username");
+
+        gitImg.src = user.data.avatar_url;
+        gitH3.textContent = user.data.name;
+        gitP1UserName.textContent = user.data.login;
+        gitP2Location.textContent = `Location: ${user.data.location}`;
+        gitP3Profile.textContent = 'Profile: '; 
+        gitA.textContent = user.data.html_url;
+        gitA.setAttribute("href", user.data.html_url);
+        gitP4Followers.textContent = `Followers: ${user.data.followers}`;
+        gitP5Following.textContent = `Following: ${user.data.following}`;
+        gitP6Bio.textContent = `Bio: ${user.data.bio}`;
+
+        gitP3Profile.append(gitA);
+
         
 
-
-        
-
+               
+        return gitCard;
 
 }
+const gitProfile = document.querySelector('.cards');
+
+
 
 /* List of LS Instructors Github username's: 
   tetondan
